@@ -5,21 +5,35 @@
         <link href="styles.css" rel="stylesheet">
     </head>
     <body>
-        <div id="connections" class="container">
-            <header>
-                <h3>Connections</h3>
-            </header>
-        </div>
-        <div id="requests" class="container">
-            <header>
-                <h3>Requests</h3>
-            </header>
-        </div>
-        <div id="results" class="container">
-            <pre>
-                Aqui va el codigo.
-            </pre>
-        </div>
+        <main class="row">
+            <div class="col-4">
+                <div id="connections" class="container">
+                    <div class="container-header">
+                        <h3>Connections</h3>
+                    </div>
+                    <div class="container-body">
+                        <p>
+                            Aqui va contenido.
+                        </p>
+                    </div>
+                </div>
+                <div id="requests" class="container">
+                    <div class="container-header">
+                        <h3>Requests</h3>
+                    </div>
+                    <div class="container-body">
+                        <p>
+                            Aqui va contenido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <pre class="container">
+                    Aqui va el codigo.
+                </pre>
+            </div>
+        </main>
     </body>
     <script src="code.js"></script>
 </html>
