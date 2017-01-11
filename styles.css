@@ -111,7 +111,21 @@ input, select {
 }
 .container {
     border: 1px solid silver;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: white;
     margin: 5px;
+}
+/* Bootstrap styles copied */
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 5px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
