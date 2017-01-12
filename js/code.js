@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             connections.remove(id);
             display();
             document.getElementById('create_form').reset();
+            form_mode("add");
         }
     }
 
