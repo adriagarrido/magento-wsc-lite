@@ -1,0 +1,109 @@
+/* imports */
+@import url('reset.css');
+
+/* BASIC STRUCTURE */
+:root {
+    --main-width: 1000px;
+    --padding: 9.5px;
+    font-family: "Segoe UI", Arial;
+    font-size: 12px;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.wide-1 { width: calc((1 * var(--main-width)) / 12); }
+.wide-2 { width: calc((2 * var(--main-width)) / 12); }
+.wide-3 { width: calc((3 * var(--main-width)) / 12); }
+.wide-4 { width: calc((4 * var(--main-width)) / 12); }
+.wide-5 { width: calc((5 * var(--main-width)) / 12); }
+.wide-6 { width: calc((6 * var(--main-width)) / 12); }
+.wide-7 { width: calc((7 * var(--main-width)) / 12); }
+.wide-8 { width: calc((8 * var(--main-width)) / 12); }
+.wide-9 { width: calc((9 * var(--main-width)) / 12); }
+.wide-10 { width: calc((10 * var(--main-width)) / 12); }
+.wide-11 { width: calc((11 * var(--main-width)) / 12); }
+.wide-12 { width: calc((12 * var(--main-width)) / 12); }
+.header {
+    font-size: 20px;
+    padding: 15px 5px;
+}
+
+/* CONTAINER */
+.container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    margin: 5px;
+}
+.container > .container-header {
+    padding: var(--padding);
+    line-height: 1.42857143;
+    /*padding: 5px 10px;*/
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.container > section {
+    padding: var(--padding);
+    line-height: 1.42857143;
+    border-bottom: 1px solid #ccc;
+}
+.container > :last-child {
+    border-bottom: 0px;
+}
+.container-header.default {
+    background-color: #f5f5f5;
+}
+
+/* HTML TAGS */
+main {
+    max-width: var(--main-width);
+    margin: 0 auto;
+}
+/* Bootstrap styles copied */
+pre {
+    display: block;
+    padding: var(--padding);
+    margin: 5px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input, select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - ((var(--padding) * 2) + (1px * 2)));
+    padding: var(--padding);
+    margin: 3px 0px 5px 0px;
+}
+select {
+    width: 100%;
+}
+label {
+    font-weight: bold;
+    font-size: 13px;
+    margin-left: 4px;
+}
+button {
+    padding: var(--padding);
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
