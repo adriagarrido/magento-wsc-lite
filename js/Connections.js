@@ -12,16 +12,13 @@ class Connections{
     }
 
     save (connection, id){
-        var tmp = new Array();
-        if (localStorage.MagentoWSCL_Connections) {
-            tmp = JSON.parse(localStorage.MagentoWSCL_Connections);
-        }
+        var tmp = this.list;
         if(id){
             tmp[id] = connection;
         }else{
             tmp.push(connection);
         }
-        localStorage.MagentoWSCL_Connections = JSON.stringify(tmp);
+        this.list = JSON.stringify(tmp);
         this.display();
     }
 

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     connections.display();
 
-    //Adds or modifies a connection to localStorage
+    //Adds (or modifies) the current connection to localStorage
     document.getElementById('save').onclick = function(){
         var url = document.getElementById('url').value;
         var username = document.getElementById('username').value;
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     };
 
-    //Fills the connection form with the connection choosed at 'connections'
+    //Fills the connection form with the selected connection
     document.getElementById('connections').onchange = function(){
         var id = select.value;
         if(id){
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    //Removes a connection from localStorage
+    //Removes the selected connection from localStorage
     document.getElementById('remove').onclick = function(){
         var id = select.value;
         if(id){
