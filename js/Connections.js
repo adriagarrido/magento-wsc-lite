@@ -19,29 +19,11 @@ class Connections{
             tmp.push(connection);
         }
         this.list = JSON.stringify(tmp);
-        this.display();
     }
 
     remove (id){
         var tmp = this.list;
         tmp.splice(id, 1);
         this.list = JSON.stringify(tmp);
-        this.display();
-    }
-
-    //Fills  'connections' select with the localStorage data
-    display () {
-        document.getElementById('connections').innerHTML = "";
-        var option = document.createElement("option");
-        option.text = "New Connection";
-        option.value = "";
-        document.getElementById('connections').add(option);
-
-        for(var i = 0; i < this.list.length; i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.text = this.list[i].username + "@" + this.list[i].url;
-            document.getElementById('connections').add(option);
-        }
     }
 }
