@@ -3,13 +3,22 @@
     <head>
         <title>Magento WSC - Lite</title>
         <link href="styles.css" rel="stylesheet">
+         <meta charset="UTF-8">
     </head>
     <body>
         <main class="row">
             <div class="col-4">
-                <div id="connections" class="container">
+                <div class="container">
                     <div class="container-header">
                         <h3>Connections</h3>
+                        <form id="create_form">
+                            <select id="connections" name="connections"></select>
+                            <input id="url" name="url" type="text" placeholder="URL" required/>
+                            <input id="username" name="username" type="text" placeholder="Username" required/>
+                            <input id="password" name="password" type="password" placeholder="Password" required/>
+                            <button id="save" type="button">Save</button>
+                            <button id="remove" type="button">Remove</button>
+                        </form>
                     </div>
                     <div class="container-body">
                         <p>
@@ -34,6 +43,7 @@
                 </pre>
             </div>
         </main>
+        <script type="text/javascript" src="js/Connections.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>
     </body>
-    <script src="code.js"></script>
 </html>
