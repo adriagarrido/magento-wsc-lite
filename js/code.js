@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for(var i = 0; i < connections.list.length; i++) {
             var option = document.createElement("option");
             option.value = i;
-            option.text = connections.list[i].username + "@" + connections.list[i].url;
+            option.text = connections.list[i].apiUser + "@" + connections.list[i].magentohost;
             select.add(option);
         }
     }
@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             selected = "";
         }
 
-        document.getElementById('url').style.display = add;
-        document.getElementById('username').style.display = add;
-        document.getElementById('password').style.display = add;
+        document.getElementById('magentohost').style.display = add;
+        document.getElementById('apiUser').style.display = add;
+        document.getElementById('apiKey').style.display = add;
 
         document.getElementById('save').style.display = add;
         document.getElementById('edit').style.display = selected;
@@ -44,15 +44,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Adds (or modifies) the current connection to localStorage
     document.getElementById('save').onclick = function(){
-        var url = document.getElementById('url').value;
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
+        var magentohost = document.getElementById('magentohost').value;
+        var apiUser = document.getElementById('apiUser').value;
+        var apiKey = document.getElementById('apiKey').value;
 
-        if (typeof(Storage) && url != '' && username != '' && password != '') {
+        if (typeof(Storage) && magentohost != '' && apiUser != '' && apiKey != '') {
             var new_connection = {
-                "url": url,
-                "username": username,
-                "password": password,
+                "magentohost": magentohost,
+                "apiUser": apiUser,
+                "apiKey": apiKey,
             }
             var id = select.value;
             connections.save(new_connection, id);
@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var id = select.value,
             mode = '';
         if(id){
-            document.getElementById('url').value = connections.list[id].url;
-            document.getElementById('username').value = connections.list[id].username;
-            document.getElementById('password').value = connections.list[id].password;
+            document.getElementById('magentohost').value = connections.list[id].magentohost;
+            document.getElementById('apiUser').value = connections.list[id].apiUser;
+            document.getElementById('apiKey').value = connections.list[id].apiKey;
             mode = 'selected';
         }else{
             document.getElementById('create_form').reset();
