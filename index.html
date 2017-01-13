@@ -23,9 +23,12 @@
                         <section>
                             <form id="create_form">
                                 <select id="connections" name="connections"></select>
-                                <input id="magentohost" name="magentohost" type="text" placeholder="URL" required/>
-                                <input id="apiUser" name="apiUser" type="text" placeholder="Username" required/>
-                                <input id="apiKey" name="apiKey" type="password" placeholder="Password" required/>
+                                <label for="magentohost">Base URL</label>
+                                <input id="magentohost" name="magentohost" type="text" required/>
+                                <label for="apiUser">API User</label>
+                                <input id="apiUser" name="apiUser" type="text" required/>
+                                <label for="apiKey">API Key</label>
+                                <input id="apiKey" name="apiKey" type="password" required/>
                                 <button id="edit" type="button">Edit</button>
                                 <button id="save" type="button">Save</button>
                                 <button id="remove" type="button">Remove</button>

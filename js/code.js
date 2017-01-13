@@ -33,8 +33,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             selected = "";
         }
 
+        document.querySelector('label[for="magentohost"]').style.display = add;
         document.getElementById('magentohost').style.display = add;
+        document.querySelector('label[for="apiUser"]').style.display = add;
         document.getElementById('apiUser').style.display = add;
+        document.querySelector('label[for="apiKey"]').style.display = add;
         document.getElementById('apiKey').style.display = add;
 
         document.getElementById('save').style.display = add;
