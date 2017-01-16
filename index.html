@@ -39,15 +39,26 @@
                         <div class="container-header default">
                             <h3>Requests</h3>
                         </div>
-                        <section></section>
+                        <section>
+                            <form id="request_form" method="post">
+                                <label for="resource">Resource</label>
+                                <input id="resource" name="resource" type="text" required />
+                                <label for="method">Method</label>
+                                <input id="method" name="method" type="text" required />
+                                <label for="args">Arguments</label>
+                                <textarea id="args" name="args" placeholder="arg1, arg2, ..."></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                        </section>
                     </div>
                 </div>
                 <div class="column wide-8">
-                    <pre></pre>
+                    <pre id="results_board"></pre>
                 </div>
             </div>
         </main>
     </body>
     <script type="text/javascript" src="js/Connections.js"></script>
+    <script type="text/javascript" src="js/Request.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
 </html>
