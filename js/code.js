@@ -103,10 +103,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
             connection,
             this.resource.value,
             this.method.value,
-            this.args.value
+            args = (this.args.value == "")? '': JSON.parse(this.args.value)
         );
+        document.getElementById('results_board').innerHTML = "Searching...";
         request.send(function(response){
-            document.getElementById('results_board').innerHTML = JSON.stringify(JSON.parse(response), null, 2);
+            try {
+                response = JSON.stringify(JSON.parse(response), null, 2);
+            } catch (e) {
+
+            } finally {
+                document.getElementById('results_board').innerHTML = response;
+            }
         });
         return false;
     }
