@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById('connections').onchange = function(){
         var id = select.value;
         if(id){
-            document.getElementById('url').value = connections.list[id].url;
-            document.getElementById('username').value = connections.list[id].username;
-            document.getElementById('password').value = connections.list[id].password;
+            document.getElementById('magentohost').value = connections.list[id].url;
+            document.getElementById('apiUser').value = connections.list[id].username;
+            document.getElementById('apiKey').value = connections.list[id].password;
         }else{
             document.getElementById('create_form').reset();
         }
