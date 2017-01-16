@@ -55,7 +55,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if(id){
             connections.remove(id);
             display();
-            document.getElementById('create_form').reset();            
+            document.getElementById('create_form').reset();
         }
+    }
+
+    document.getElementById('request_form').onsubmit = function(){
+        //Mirar si el formulario de arriba tiene datos o existe la conexión.
+        var connection = connections.list[select.value];
+        var request = new Request(
+            connection,
+            this.resource.value,
+            this.method.value,
+            this.args.value
+        );
+        request.send(function(response){
+            document.getElementById('results_board').innerHTML = JSON.stringify(JSON.parse(response), null, 2);
+        });
+        return false;
     }
 });

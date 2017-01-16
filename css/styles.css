@@ -81,8 +81,9 @@ pre {
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 4px;
+    overflow-x: scroll;
 }
-input, select {
+input, select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: calc(100% - ((var(--padding) * 2) + (1px * 2)));
@@ -91,6 +92,9 @@ input, select {
 }
 select {
     width: 100%;
+}
+textarea {
+    resize: vertical;
 }
 label {
     font-weight: bold;
