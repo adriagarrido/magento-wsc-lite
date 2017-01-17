@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Magento WSC - Lite</title>
+        <link href="css/styles.css" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <main>
+            <div class="row">
+                <div class="column wide-12">
+                    <div class="header">
+                        <h1>Magento WSC - Lite</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column wide-4">
+                    <div class="container">
+                        <div class="container-header default">
+                            <h3>Connections</h3>
+                        </div>
+                        <section>
+                            <form id="create_form">
+                                <select id="connections" name="connections"></select>
+                                <label for="magentohost">Base URL</label>
+                                <input id="magentohost" name="magentohost" type="text" required/>
+                                <label for="apiUser">API User</label>
+                                <input id="apiUser" name="apiUser" type="text" required/>
+                                <label for="apiKey">API Key</label>
+                                <input id="apiKey" name="apiKey" type="password" required/>
+                                <button id="edit" type="button">Edit</button>
+                                <button id="save" type="button">Save</button>
+                                <button id="remove" type="button">Remove</button>
+                            </form>
+                        </section>
+                    </div>
+                    <div class="container">
+                        <div class="container-header default">
+                            <h3>Requests</h3>
+                        </div>
+                        <section>
+                            <form id="request_form" method="post">
+                                <label for="resource">Resource</label>
+                                <input id="resource" name="resource" type="text" required />
+                                <label for="method">Method</label>
+                                <input id="method" name="method" type="text" required />
+                                <label for="args">Arguments</label>
+                                <textarea id="args" name="args" placeholder="arg1, arg2, ..."></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="column wide-8">
+                    <pre id="results_board"></pre>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script type="text/javascript" src="js/Connections.js"></script>
+    <script type="text/javascript" src="js/Connection.js"></script>
+    <script type="text/javascript" src="js/Request.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+</html>
