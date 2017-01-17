@@ -57,6 +57,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('edit').style.display = selected;
         document.getElementById('remove').style.display = edit;
     }
+    // This is a response from Gumbo(http://stackoverflow.com/users/53114/gumbo)
+    // on http://stackoverflow.com/a/3710226
+    function IsJsonString(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
 
     form_mode("add");
     showConnection();
@@ -85,7 +95,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         form_mode ("edit");
     }
     document.getElementById('request_form').onsubmit = function(){
-        //Mirar si el formulario de arriba tiene datos.
+        if ((this.args.value != '') && (! IsJsonString(this.args.value))) {
+            document.getElementById('results_board').innerHTML = 'Arguments is not a valid JSON';
+            return false;
+        }
         var connection = tempConnection();
         var request = new Request(
             connection,
@@ -95,13 +108,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         );
         document.getElementById('results_board').innerHTML = "Searching...";
         request.send(function(response){
-            try {
-                response = JSON.stringify(JSON.parse(response), null, 2);
-            } catch (e) {
-
-            } finally {
-                document.getElementById('results_board').innerHTML = response;
-            }
+            document.getElementById('results_board').innerHTML = response;
         });
         return false;
     }
