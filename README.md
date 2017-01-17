@@ -6,7 +6,7 @@ Client for Magento SOAP v1 API. Provides you with the ability to manage your eCo
 - [License](#license)
 
 ## Installation
-Clone this repository on your development enviroment.
+Clone this repository on your development enviroment. This application use local storage in order to save data.
 ## Usage
 Enter the magentoHost, apiUser and apiKey from the store you want to acces on the upper left form. You can save the connection data to keep it stored for future connections.
 On the bottom left form enter the resource, method and arguments in a valid JSON string.

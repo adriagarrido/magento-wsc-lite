@@ -1,31 +1,44 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    var select = document.getElementById('connections');
-    var connections = new Connections;
-
-    display();
-    form_mode("add");
-
+    var select_connections = document.getElementById('connections'),
+        connections = new Connections();
     //Fills  'connections' select with the localStorage data
-    function display () {
-        select.innerHTML = "";
-        var option = document.createElement("option");
-        option.text = "New Connection";
-        option.value = "";
-        select.add(option);
-
-        for(var i = 0; i < connections.list.length; i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.text = connections.list[i].apiUser + "@" + connections.list[i].magentohost;
-            select.add(option);
+    function showConnection(id = '') {
+        select_connections.innerHTML = "";
+        var empty_option = document.createElement("option");
+        empty_option.text = "New Connection";
+        empty_option.value = "";
+        select_connections.add(empty_option);
+        connections.toOptionArray().forEach(function(value){
+            select_connections.add(value);
+        });
+        select_connections.value = id;
+    }
+    function tempConnection() {
+        var id = select_connections.value,
+            magentohost = document.getElementById('magentohost').value,
+            apiUser = document.getElementById('apiUser').value,
+            apiKey = document.getElementById('apiKey').value;
+        return new Connection(magentohost, apiUser, apiKey, id);
+    }
+    //Adds (or modifies) the current connection to localStorage
+    function saveConnection() {
+        var connection = tempConnection();
+        if (select_connections.value) {
+            return connections.editConnection(connection);
+        } else {
+            return connections.addConnection(connection);
         }
     }
-
+    //Removes the selected connection from localStorage
+    function deleteConnection() {
+        connections.deleteConnection(select_connections.value);
+    }
     //Shows or hides the fieds of connection form
     function form_mode (mode) {
         var add = selected = edit = 'none';
         if(mode == 'add'){
             add = "";
+            document.getElementById('create_form').reset();
         }else if (mode == 'edit'){
             edit = "";
             add = "";
@@ -45,60 +58,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('remove').style.display = edit;
     }
 
-    //Adds (or modifies) the current connection to localStorage
-    document.getElementById('save').onclick = function(){
-        var magentohost = document.getElementById('magentohost').value;
-        var apiUser = document.getElementById('apiUser').value;
-        var apiKey = document.getElementById('apiKey').value;
-
-        if (typeof(Storage) && magentohost != '' && apiUser != '' && apiKey != '') {
-            var new_connection = {
-                "magentohost": magentohost,
-                "apiUser": apiUser,
-                "apiKey": apiKey,
-            }
-            var id = select.value;
-            connections.save(new_connection, id);
-            display();
-            form_mode("selected");
-            select.value = (id) ? id : connections.list.length - 1;
-        }
+    form_mode("add");
+    showConnection();
+    document.getElementById('save').onclick = function() {
+        showConnection(saveConnection());
+        form_mode('selected');
     };
-
-    //Removes the selected connection from localStorage
-    document.getElementById('remove').onclick = function(){
-        var id = select.value;
-        if(id){
-            connections.remove(id);
-            display();
-            document.getElementById('create_form').reset();
-            form_mode("add");
-        }
+    document.getElementById('remove').onclick = function() {
+        deleteConnection();
+        showConnection();
+        form_mode('add');
     }
-
     //Fills the connection form with the selected connection
-    document.getElementById('connections').onchange = function(){
-        var id = select.value,
-            mode = '';
-        if(id){
-            document.getElementById('magentohost').value = connections.list[id].magentohost;
-            document.getElementById('apiUser').value = connections.list[id].apiUser;
-            document.getElementById('apiKey').value = connections.list[id].apiKey;
-            mode = 'selected';
-        }else{
-            document.getElementById('create_form').reset();
+    select_connections.onchange = function(){
+        var connection = connections.getConnection(select_connections.value),
             mode = 'add';
+        if (select_connections.value) {
+            document.getElementById('magentohost').value = connection.magentohost;
+            document.getElementById('apiUser').value = connection.apiUser;
+            document.getElementById('apiKey').value = connection.apiKey;
+            mode = 'selected';
         }
         form_mode(mode);
     }
-
     document.getElementById('edit').onclick = function(){
         form_mode ("edit");
     }
-
     document.getElementById('request_form').onsubmit = function(){
-        //Mirar si el formulario de arriba tiene datos o existe la conexión.
-        var connection = connections.list[select.value];
+        //Mirar si el formulario de arriba tiene datos.
+        var connection = tempConnection();
         var request = new Request(
             connection,
             this.resource.value,
